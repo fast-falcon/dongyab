@@ -353,7 +353,7 @@
                                 {% for user in users %}
                                     <tr>
                                         <td>{{ forloop.counter }}</td>
-                                        <td>user.name</td>
+                                        <td>{{ user.first_name }}</td>
                                         <td class="text-danger">{{ user.talab }}</td>
                                         <td>{{ user.factor_owner.first.title }}</td>
 

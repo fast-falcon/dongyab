@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ef093dc-549a-4e9a-8165-77ee04b568c1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dong_yab/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/dong_yab/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +76,7 @@
       <workItem from="1610346263276" duration="308000" />
       <workItem from="1610346606490" duration="86000" />
       <workItem from="1610346718566" duration="14659000" />
-      <workItem from="1610385825020" duration="16611000" />
+      <workItem from="1610385825020" duration="16971000" />
     </task>
     <task id="LOCAL-00001" summary="edit login and sign in">
       <created>1610389462809</created>
@@ -101,7 +99,21 @@
       <option name="project" value="LOCAL" />
       <updated>1610400751781</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="change style">
+      <created>1610402493869</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1610402493869</updated>
+    </task>
+    <task id="LOCAL-00005" summary="edit first page">
+      <created>1610402580438</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610402580438</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,17 +134,8 @@
     <MESSAGE value="edit login and sign in" />
     <MESSAGE value="add balance" />
     <MESSAGE value="last" />
-    <option name="LAST_COMMIT_MESSAGE" value="last" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/account/views.py</url>
-          <line>70</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="change style" />
+    <MESSAGE value="edit first page" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit first page" />
   </component>
 </project>
