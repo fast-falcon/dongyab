@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from account import views
+from account.views import serve_file
 from dong_yab import settings
 from django.conf.urls.static import static
 
@@ -23,9 +24,12 @@ urlpatterns = [
     path("", views.first_page),
     path('admin/', admin.site.urls),
     path('account/', views.sign, name="sign"),
-    path('home/', views.home, name="home"),
+    path('home/<str:uuid>/', views.home, name="home"),
     path("logout/", views.logout_view, name="logout"),
-    path("add_balance/", views.add_balance, name="add_balance")
+    path("add_balance/", views.add_balance, name="add_balance"),
+    path('add_group/', views.add_group, name="add_group"),
+    path('media/(<str:path>)', serve_file, name='serve_file'),
+    path('join_group/', views.join_group, name="join_group")
 ]
 
 if settings.DEBUG:

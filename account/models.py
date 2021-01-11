@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Sum
@@ -16,9 +18,9 @@ class Profile(models.Model):
 class Group(models.Model):
     group_members = models.ManyToManyField(User, related_name="group_members", related_query_name="group_members")
     name = models.CharField(max_length=256)
-    uuid = models.UUIDField()
-    # group_owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="group_owner")
+    uuid = models.UUIDField(auto_created=uuid.uuid4())
     image = models.ImageField()
+    description = models.TextField()
 
     def count_user(self):
         return self.group_members.all().count()

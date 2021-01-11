@@ -118,3 +118,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
 VERSION_CSS = "0.0.2"
 VERSION_JS = "0.0.1"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, '../media/')
+MEDIA_URL = '/media/'
+SENDFILE_BACKEND = 'sendfile.backends.development'
