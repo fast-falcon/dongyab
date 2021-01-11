@@ -20,9 +20,11 @@ from dong_yab import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path("", views.first_page),
     path('admin/', admin.site.urls),
     path('account/', views.sign, name="sign"),
-    path('home/<str:uuid>/', views.home, name="home"),
+    path('home/', views.home, name="home"),
+    path("logout/", views.logout_view, name="logout")
 ]
 
 if settings.DEBUG:
