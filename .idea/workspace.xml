@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ef093dc-549a-4e9a-8165-77ee04b568c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/account/migrations/0008_auto_20210111_1906.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dong_yab/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/dong_yab/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dong_yab/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dong_yab/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +78,7 @@
       <workItem from="1610346263276" duration="308000" />
       <workItem from="1610346606490" duration="86000" />
       <workItem from="1610346718566" duration="14659000" />
-      <workItem from="1610385825020" duration="14910000" />
+      <workItem from="1610385825020" duration="16611000" />
     </task>
     <task id="LOCAL-00001" summary="edit login and sign in">
       <created>1610389462809</created>
@@ -98,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610390874331</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="last">
+      <created>1610400751781</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1610400751781</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,7 +121,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="edit login and sign in" />
     <MESSAGE value="add balance" />
-    <option name="LAST_COMMIT_MESSAGE" value="add balance" />
+    <MESSAGE value="last" />
+    <option name="LAST_COMMIT_MESSAGE" value="last" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
