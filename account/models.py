@@ -7,7 +7,7 @@ from django.db.models import Sum
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     image = models.ImageField()
     wallet = models.BigIntegerField(default=0)
 

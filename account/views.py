@@ -47,14 +47,22 @@ def sign(request):
     return HttpResponse()
 
 
+def add_balance(request):
+    profile = request.user.profile
+    profile.wallet += int(request.GET.get("price", 0))
+    profile.save()
+    return HttpResponseRedirect(reverse("home"))
+
+
 @login_required(login_url="sign")
-def home(request):
+def home(request, uuid=None):
     user_group_factors = []
     user_groups = request.user.group_members.all()
     users = []
     this_group = None
     if user_groups:
-        uuid = user_groups.first().uuid
+        if not uuid:
+            uuid = user_groups.first().uuid
         this_group = Group.objects.get(uuid=uuid)
         user_group_factors = Factor.objects.filter(factor_owner=request.user, factor_group__uuid=uuid)
         users = User.objects.filter(factor_group=this_group)

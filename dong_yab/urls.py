@@ -24,7 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', views.sign, name="sign"),
     path('home/', views.home, name="home"),
-    path("logout/", views.logout_view, name="logout")
+    path("logout/", views.logout_view, name="logout"),
+    path("add_balance/", views.add_balance, name="add_balance")
 ]
 
 if settings.DEBUG:
