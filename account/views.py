@@ -19,7 +19,7 @@ from account.forms import RegisterForm, LoginForm
 def first_page(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse("home", kwargs={"uuid": "1"}))
-    return HttpResponseRedirect(reverse("signin"))
+    return HttpResponseRedirect(reverse("sign"))
 
 
 def sign(request):
