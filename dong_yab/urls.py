@@ -29,7 +29,8 @@ urlpatterns = [
     path("add_balance/", views.add_balance, name="add_balance"),
     path('add_group/', views.add_group, name="add_group"),
     path('media/(<str:path>)', serve_file, name='serve_file'),
-    path('join_group/', views.join_group, name="join_group")
+    path('join_group/', views.join_group, name="join_group"),
+    path('add_factor/', views.add_factor, name="add_factor")
 ]
 
 if settings.DEBUG:

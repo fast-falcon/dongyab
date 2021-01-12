@@ -1,3 +1,5 @@
+import json
+
 from django.db.models.functions import Coalesce
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -89,30 +91,32 @@ def home(request, uuid=None):
         this_group = Group.objects.get(uuid=uuid)
         user_group_factors = Factor.objects.filter(factor_owner=request.user, factor_group__uuid=uuid)
         users = this_group.group_members.all()
-
+    main_user = request.user
+    talab = Factor.objects.filter(factor_owner=main_user, factor_group=this_group).aggregate(
+        price__sum=Coalesce(Sum('price'), 0)).get(
+        "price__sum", 0)
+    bedehi = Factor.objects.filter(factor_members=main_user, factor_group=this_group).annotate(
+        devided=Count('factor_members') + 1).aggregate(
+        price_sum=Coalesce(Sum('price') / F("devided"),0))["price_sum"]
+    setattr(main_user, "talab", talab - bedehi)
+    other_user = []
     for user in users:
-        talab = Factor.objects.filter(factor_owner=user, factor_group=this_group).aggregate(
-            price__sum=Coalesce(Sum('price'), 0)).get(
-            "price__sum", 0)
-        bedehi = Factor.objects.filter(factor_members=user, factor_group=this_group).annotate(
-            devided=Count('factor_members')).aggregate(
-            price_sum=Sum('price') / F("devided")).get(
-            "price__sum", 0)
-        setattr(user, "talab_me", talab - bedehi)
-        talab = Factor.objects.filter(factor_owner=request.user, factor_group=this_group).aggregate(
-            price__sum=Coalesce(Sum('price'), 0)).get(
-            "price__sum", 0)
-        bedehi = Factor.objects.filter(factor_members=request.user, factor_group=this_group).annotate(
-            devided=Count('factor_members')).aggregate(
-            price_sum=Sum('price') / F("devided")).get(
-            "price__sum", 0)
-        setattr(user, "talab", talab - bedehi)
+        if main_user.id != user.id:
+            talab = Factor.objects.filter(factor_owner=user, factor_group=this_group).aggregate(
+                price__sum=Coalesce(Sum('price'), 0)).get(
+                "price__sum", 0)
+            bedehi = Factor.objects.filter(factor_members=user, factor_group=this_group).annotate(
+                devided=Count('factor_members') + 1).aggregate(price_sum=Coalesce(Sum('price') / F("devided"), 0))[
+                "price_sum"]
+            setattr(user, "talab", talab - bedehi)
+            other_user.append(user)
 
     contex = {
         "groups": user_groups,
         "user_factors": user_group_factors,
-        "users": users,
-        "group": this_group
+        "users": other_user,
+        "group": this_group,
+        "main_user": main_user
     }
     return render(request, 'index.html', contex)
 
@@ -124,3 +128,16 @@ def logout_view(request):
 
 def serve_file(http_request, path):
     return sendfile(http_request, MEDIA_ROOT + "/" + path)
+
+
+def add_factor(request):
+    kala_list = json.loads(request.POST.get("factor"))
+    uuid = request.POST['uuid']
+    group = Group.objects.filter(uuid=uuid).first()
+    for kala in kala_list:
+        factor = Factor(name=kala['kala'], price=int(kala['cost']), factor_owner=request.user, factor_group=group)
+        factor.save()
+        factor.factor_members.set(kala['userId'])
+        factor.factor_members.add(request.user)
+        factor.save()
+    return HttpResponseRedirect(reverse("home", kwargs={"uuid": uuid}))

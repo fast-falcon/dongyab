@@ -27,7 +27,7 @@
 
 <body class="container1 container" style="max-width: 80%">
 
-<section id="container" >
+<section id="container">
     <div class="sidebar-toggle-box">
         <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
     </div>
@@ -169,12 +169,6 @@
                             </div>
                             <div class="col-sm-7">
 
-                                <div class="form-group ">
-                                    <label for="">توضیحات خرید</label>
-                                    <textarea id=buy-description class="form-control" rows=1
-                                              placeholder="توضیحات خرید را وارد کنید "></textarea>
-                                </div>
-
                                 <div class="">
                                     <header class="panel-heading">
                                         <b> لیست اقلام </b>
@@ -259,7 +253,7 @@
                                         </div>
 
                                         <div class="col-sm-6 ">
-                                            <button class="mt-2 btn btn-success btn-block">
+                                            <button id="finish" class="mt-2 btn btn-success btn-block">
                                                 ثبت نهایی فاکتور
                                             </button>
                                         </div>
@@ -284,16 +278,14 @@
                         <div class="col-md-6 ">
                             <h5><i class="icon-comments"></i> وضعیت طلب و بدهی من </h5>
                             <ul class="ul-scroll">
-                                {% for user in users %}
-                                    <li><img class="user-group-img" src={{ user.profile.image }}>{{ user.name }}<span
-                                            class="alert text-success">{{ user.talab_me }}تومان
-                                        {% if user.talab_me > 0 %}
-                                            طلب
-                                        {% else %}
-                                            بدهی
+                                <li><img class="user-group-img" src={{ main_user.profile.image }}>{{ user.name }}<span
+                                        class="alert text-success">{{ main_user.talab }}تومان
+                                    {% if user.talab > 0 %}
+                                        طلب
+                                    {% else %}
+                                        بدهی
 
-                                        {% endif %}  دارم</span></li>
-                                {% endfor %}
+                                    {% endif %}  دارم</span></li>
                             </ul>
                         </div>
                         <div class="col-md-6  ">
@@ -305,6 +297,7 @@
                                     <th>#</th>
 
                                     <th>فعالیت</th>
+                                    <th>مبلغ</th>
                                     <th> تاریخ وساعت</th>
 
                                 </tr>
@@ -316,6 +309,7 @@
                                         <td>{{ forloop.counter }}</td>
 
                                         <td>{{ user_factor.name }}</td>
+                                        <td> {{ user_factor.price }}</td>
                                         <td>{{ user_factor.time }}</td>
 
                                     </tr>
@@ -355,7 +349,7 @@
                                         <td>{{ forloop.counter }}</td>
                                         <td>{{ user.first_name }}</td>
                                         <td class="text-danger">{{ user.talab }}</td>
-                                        <td>{{ user.factor_owner.first.title }}</td>
+                                        <td>{{ user.factor_owner.first.time }}</td>
 
                                     </tr>
                                 {% endfor %}
@@ -378,7 +372,11 @@
 
 </section>
 
-
+<form id="factor-form" method="post" action="/add_factor/">
+    {% csrf_token %}
+    <input id="factor" type="hidden" name="factor">
+    <input name="uuid" value="{{ group.uuid }}">
+</form>
 <div id="createModal" class="modal modal-create" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -474,36 +472,36 @@
     </div>
 </div>
 <div id="EditUserModal" class="modal modal-create" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document"
-    <div class="modal-body">
-        <form class="form">
-            <div class="row">
-                <div class="col-md-6">
+    <div class="modal-dialog" role="document">
+        <div class="modal-body">
+            <form class="form">
+                <div class="row">
+                    <div class="col-md-6">
 
-                    <div class="form-group ">
-                        <label>نام </label>
-                        <input type="text" class="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" value="امیر محمدی">
-                    </div>
-                    <div class="form-group ">
-                        <label>ایمیل </label>
-                        <input type="email" class="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" value="amyrm1960@gmail.com">
-                    </div>
+                        <div class="form-group ">
+                            <label>نام </label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" value="امیر محمدی">
+                        </div>
+                        <div class="form-group ">
+                            <label>ایمیل </label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" value="amyrm1960@gmail.com">
+                        </div>
 
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group ">
-                        <label>پروفایل شخصی</label>
-                        <input type="file" class="dropify" data-height="200"/>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label>پروفایل شخصی</label>
+                            <input type="file" class="dropify" data-height="200"/>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <button type="submit" class=" btn btn-sub  btn-block  m-t-2">ذخیره تغییرات</button>
-        </form>
+                <button type="submit" class=" btn btn-sub  btn-block  m-t-2">ذخیره تغییرات</button>
+            </form>
+        </div>
+
     </div>
-
-</div>
 </div>
 </div>
 <script src="/static/js/jquery.js"></script>
@@ -527,6 +525,10 @@
             'fileSize': 'حجم فایل بیشتر از حد مجاز است (1M).'
         }
     });
+
+    function check() {
+        console.log(groups)
+    }
 </script>
 </body>
 

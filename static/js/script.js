@@ -1,40 +1,37 @@
 $(document).ready(function () {
-     
+
     var groups = [];
-    var Description=$("#buy-description").val();
+    var Description = $("#buy-description").val();
     var cost = 0, kala = "";
     $(".btn-edit-list").hide();
     $(".btn-cancell").hide();
-   if($(".table-scroll").height()>200)
-   {
-       $(".table-scroll").addClass("div-scroll");
-   }
-   if($(".ul-scroll").height()>200)
-   {
-    $(".ul-scroll").addClass("div-scroll");
-   }
-   $(document).on("click","#btn-add-to-list",function(){
-       
+    if ($(".table-scroll").height() > 200) {
+        $(".table-scroll").addClass("div-scroll");
+    }
+    if ($(".ul-scroll").height() > 200) {
+        $(".ul-scroll").addClass("div-scroll");
+    }
+    $(document).on("click", "#btn-add-to-list", function () {
+
         kala = $("#kala").val();
         cost = $("#cost").val();
         var userId = [];
         $("input[type=checkbox]:checked").each(function () {
             userId.push($(this).val());
         });
-        groups.push({ kala: kala, cost: cost, userId: userId });
+        groups.push({kala: kala, cost: cost, userId: userId});
         ResetForm();
         FillTable(groups);
         SumCost();
     });
-    $(".btn-show-box").on('click',()=>
-    {
+    $(".btn-show-box").on('click', () => {
         $("#buy-box").show(700);
-        $("#btn-show").hide(); 
+        $("#btn-show").hide();
         FillTable(groups);
         SumCost();
     });
     $(".btn-hide").on('click', () => {
-        groups=[];
+        groups = [];
         ResetForm();
         $("#buy-box").hide(700);
         $("#btn-show").show();
@@ -46,12 +43,11 @@ $(document).ready(function () {
         $("#kala").val(item.kala);
         $("#cost").val(item.cost);
         $("#add-toloist-form input:checkbox").each(function (index, val) {
-            console.log(val);
+            console.log(val, 33333333333);
             if ((item.userId.find(p => p == val.value))) {
 
                 $(val).prop("checked", true);
-            }
-            else {
+            } else {
 
                 $(val).prop("checked", false);
             }
@@ -73,12 +69,12 @@ $(document).ready(function () {
             userId: usersId
         };
         groups.splice(index, 1, group);
-        console.log(groups);
+        console.log(groups, 555555555);
         ResetForm();
         FillTable(groups);
         SumCost();
     });
-    $(document).on('click',"#btn-cancell",function(){
+    $(document).on('click', "#btn-cancell", function () {
         ResetForm();
         $(".btn-edit-list").hide();
         $(".btn-cancell").hide();
@@ -87,7 +83,7 @@ $(document).ready(function () {
     $(document).on("click", "#delete-buy-btn", function () {
 
         var index = parseInt($(this).attr("index"));
-       
+
         groups.splice(index, 1);
 
         FillTable(groups);
@@ -96,7 +92,11 @@ $(document).ready(function () {
 
     });
 
-
+    $(document).on("click", "#finish", function () {
+        $("#factor").val(JSON.stringify(groups))
+        console.log($("#factor").val())
+        $("#factor-form").submit();
+    });
 });
 
 function FillTable(data) {
@@ -117,6 +117,7 @@ function FillTable(data) {
         $("#table-row").append(content);
     });
 }
+
 function SumCost() {
     var costs = 0;
     $(".cost ").each(function () {
@@ -125,28 +126,30 @@ function SumCost() {
     $(".alert-info span").text(costs);
 }
 
-function   ResetForm()
-{
+function ResetForm() {
     $("#kala").val(" ");
     $("#cost").val(0);
     $("input[type=checkbox]").each(function () {
-      $(this).prop("checked",false)
+        $(this).prop("checked", false)
     });
 }
+
 function CreateNewGroups() {
     $('#createModal').modal();
 }
-function ChrgeWallet()
-{
+
+function ChrgeWallet() {
     $('#ChargeModal').modal();
 }
-function EditUser()
-{
+
+function EditUser() {
     $('#EditUserModal').modal();
 }
+
 function JoinGroup() {
     $('#joinModal').modal();
 }
+
 function ShowBuyBox() {
 
 }

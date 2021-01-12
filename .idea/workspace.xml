@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ef093dc-549a-4e9a-8165-77ee04b568c1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dong_yab/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dong_yab/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +31,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../evisa_Core" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../new1/dongyab" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -76,7 +80,7 @@
       <workItem from="1610346263276" duration="308000" />
       <workItem from="1610346606490" duration="86000" />
       <workItem from="1610346718566" duration="14659000" />
-      <workItem from="1610385825020" duration="16971000" />
+      <workItem from="1610385825020" duration="23746000" />
     </task>
     <task id="LOCAL-00001" summary="edit login and sign in">
       <created>1610389462809</created>
@@ -113,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610402580438</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="user list in home page">
+      <created>1610402975769</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610402975769</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +147,7 @@
     <MESSAGE value="last" />
     <MESSAGE value="change style" />
     <MESSAGE value="edit first page" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit first page" />
+    <MESSAGE value="user list in home page" />
+    <option name="LAST_COMMIT_MESSAGE" value="user list in home page" />
   </component>
 </project>
